@@ -18,7 +18,7 @@ export default ({ match, location }) => (
             <div className="product-page">
                 <p>{location.state.description}</p>
                 <img src={location.state.imageUrl} />
-                <div onClick={(event) => { store.onAddedToCart(event, location.state.title, location.state.description, location.state.price) }}>
+                <div onClick={(event) => { store.onAddedToCart(event, location.state.title, location.state.description, location.state.price, location.state.imageUrl) }}>
                     <button>Buy</button>
                 </div>
             </div>

@@ -9,11 +9,12 @@ class Cache {
         return Cache.instance;
     }
     
-    onAddedToCart(event, productTitle, productDescription, productPrice) 
+    onAddedToCart(event, productTitle, productDescription, productPrice, productUrl) 
     {
         const newProduct = {
             price: productPrice,
             title: productTitle,
+            imageUrl: productUrl,
             description: productDescription
         };
         this.cart.push(newProduct);
