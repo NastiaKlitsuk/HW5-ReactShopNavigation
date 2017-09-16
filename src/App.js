@@ -31,6 +31,12 @@ const authProvider = (WrappedComponent) => {
   )
 }
 
+const ContactsWrapper = () => {
+    return (
+        <Contact navigationMessage="Are you sure you want to navigate?" />
+    );
+};
+
 class App extends Component {
 
   render() {
@@ -41,7 +47,7 @@ class App extends Component {
           <Route render={({ match }) => <About />} path="/about" />
           <Route component={ProductPage} path="/products/:id" />
           <Route component={Products} path="/products" />
-          <Route component={Contact} path="/contact" />
+          <Route component={ContactsWrapper} path="/contact"/>
           <Route component={authProvider(Protected)} path="/protected"/>
           <Route render={({ match }) => 
             <CSSTransition appear in={!!match} timeout={1000} classNames="fade">

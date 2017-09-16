@@ -7,14 +7,14 @@ import {
   } from '../../components/';
 
 
-export default ({ links }) => (
+export default ({ links, navigationMessage }) => (
     <Layout>
         <Section>
             <Heading size={2}>Contact</Heading>
             <div className="form-group" style={{ padding: '2rem', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-                <InputField name="Name" type="text" />
-                <InputField name="Email" type="email" />
-                <InputField name="Message" type="textarea" />
+                <InputField name="Name" type="text" navigationMessage={navigationMessage}/>
+                <InputField name="Email" type="email" navigationMessage={navigationMessage}/>
+                <InputField name="Message" type="textarea" navigationMessage={navigationMessage}/>
             </div>
         </Section>
     </Layout>

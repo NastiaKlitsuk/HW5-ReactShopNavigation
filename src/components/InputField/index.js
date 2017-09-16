@@ -18,6 +18,7 @@ export default class InputField extends React.Component {
             value: this.state.value,
             onChange: ({ target: { value }}) => this.changeText(value)
         }
+        console.log(this.props.navigationMessage);
         return (
             <div className={classNames(["input-field", this.state.value && "form-dirty"])}  onBlur={() => this.onBlur()}>
                 { this.props.type === 'textarea' ? 
@@ -27,7 +28,8 @@ export default class InputField extends React.Component {
                 <label>{this.props.name}</label>
                 <Prompt
                     when={this.state.value !== ''}
-                    message={location => (
+                    message={location => ( this.props.navigationMessage ?
+                        this.props.navigationMessage :
                         `Are you sure you want to go to 
                             ${location.pathname} without submitting the form?`
                     )}
