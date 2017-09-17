@@ -10,6 +10,7 @@ import Contact from './pages/Contact/';
 import NotFound from './pages/NotFound';
 import { Layout } from './components/';
 import Cart from './pages/Cart/';
+import Login from './pages/Login';
 import CSSTransition from 'react-transition-group/CSSTransition'
 import cart from './services/cache.js';
 
@@ -42,7 +43,7 @@ const ContactWrapper = () => {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { cart: cart.items };
+    this.state = { isLogedIn: false, cart: cart.items };
     this.onRemoveItemFromCart = this.onRemoveItemFromCart.bind(this);
   }
 
@@ -50,6 +51,12 @@ class App extends Component {
     window.alert("onRemoveItemFromCart");
     cart.onRemoveItemFromCart(event, productId);
     this.setState({ cart: cart.items });
+  }
+
+  onLoggedIn() {
+    window.alert("onLoggedIn");
+    cart.onLogedIn();
+    this.setState({ isLogedIn: cart.isLogedIn });
   }
 
   render() {
@@ -62,11 +69,9 @@ class App extends Component {
           <Route component={Products} path="/products" />
           <Route component={ContactWrapper} path="/contact" />
           <Route component={authProvider(Protected)} path="/protected" />
-          <Route render={({ match }) =>
+          <Route render={({ match, props }) =>
             <CSSTransition appear in={!!match} timeout={1000} classNames="fade">
-              <Layout>
-                <h1>Login</h1>
-              </Layout>
+              <Login {...props} onLoggedIn={this.onLoggedIn}/>
             </CSSTransition>
           } path="/login" />
           <Route component={NotFound} />

@@ -6,6 +6,7 @@ class Cache {
             this.items = [];
             this.onAddedToCart = this.onAddedToCart.bind(this);
             this.onRemoveItemFromCart = this.onRemoveItemFromCart.bind(this);
+            this.isLogedIn = false;
             Cache.instance = this;
         }
 
@@ -23,7 +24,6 @@ class Cache {
             description: productDescription
         };
         this.items.push(newProduct);
-        window.alert(`${this.items[0].title} ${this.items[0].price} ${this.items[0].description}`);
         window.alert("The item was added to the shopping cart successfully.");
     }
 
@@ -36,6 +36,11 @@ class Cache {
         if (positionItemToRemove > -1) {
             this.items.splice(positionItemToRemove, 1);
         }
+    }
+
+    onLogedIn()
+    {
+        this.isLogedIn = true;
     }
 }
 
