@@ -1,6 +1,6 @@
 import React from 'react';
 import './product-page.css';
-import store from '../../services/cache.js';
+import cart from '../../services/cache.js';
 import { Layout, Section, Card, Heading } from '../../components/'
 
 import {
@@ -18,7 +18,7 @@ export default ({ match, location }) => (
             <div className="product-page">
                 <p>{location.state.description}</p>
                 <img src={location.state.imageUrl} />
-                <div onClick={(event) => { store.onAddedToCart(event, location.state.title, location.state.description, location.state.price, location.state.imageUrl) }}>
+                <div onClick={(event) => { cart.onAddedToCart(event, location.state.id, location.state.title, location.state.description, location.state.price, location.state.imageUrl) }}>
                     <button>Buy</button>
                 </div>
             </div>

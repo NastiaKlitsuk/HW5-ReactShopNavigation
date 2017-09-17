@@ -25,7 +25,6 @@
 }
 
 
-
 .product-bottom-desc {
     position: absolute;
     left: 0;
@@ -46,4 +45,18 @@
     display: block;
     height: 100%;
     text-decoration: none;
+}
+
+.remove
+{
+    position: relative; 
+    z-index: 1;
+    background-image: url("./images/trash.jpg");
+    margin: 10px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    bottom: 0px;
+    border-style: hidden;
+    border-radius: 10px;
 }

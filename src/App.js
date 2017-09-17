@@ -9,7 +9,9 @@ import ProductPage from './pages/ProductPage';
 import Contact from './pages/Contact/';
 import NotFound from './pages/NotFound';
 import { Layout } from './components/';
+import Cart from './pages/Cart/';
 import CSSTransition from 'react-transition-group/CSSTransition'
+import cart from './services/cache.js';
 
 import {
   BrowserRouter as Router,
@@ -25,19 +27,31 @@ const authProvider = (WrappedComponent) => {
   const isAuthenticated = false;
 
   return ({ match }) => (
-    isAuthenticated ? 
-      <WrappedComponent {...this.props } match={match}/> : 
+    isAuthenticated ?
+      <WrappedComponent {...this.props } match={match} /> :
       <Redirect to="login" />
   )
 }
 
-const ContactsWrapper = () => {
-    return (
-        <Contact navigationMessage="Are you sure you want to navigate?" />
-    );
+const ContactWrapper = () => {
+  return (
+    <Contact navigationMessage="Are you sure you want to navigate?" />
+  );
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { cart: cart.items };
+    this.onRemoveItemFromCart = this.onRemoveItemFromCart.bind(this);
+  }
+
+  onRemoveItemFromCart(event, productId) {
+    window.alert("onRemoveItemFromCart");
+    cart.onRemoveItemFromCart(event, productId);
+    this.setState({ cart: cart.items });
+  }
+
   render() {
     return (
       <Router>
@@ -46,16 +60,16 @@ class App extends Component {
           <Route render={({ match }) => <About />} path="/about" />
           <Route component={ProductPage} path="/products/:id" />
           <Route component={Products} path="/products" />
-          <Route component={ContactsWrapper} path="/contact"/>
-          <Route component={authProvider(Protected)} path="/protected"/>
-          <Route render={({ match }) => 
+          <Route component={ContactWrapper} path="/contact" />
+          <Route component={authProvider(Protected)} path="/protected" />
+          <Route render={({ match }) =>
             <CSSTransition appear in={!!match} timeout={1000} classNames="fade">
               <Layout>
                 <h1>Login</h1>
               </Layout>
             </CSSTransition>
-          } path="/login"/>
-          <Route component={NotFound}/>
+          } path="/login" />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     );
@@ -64,3 +78,4 @@ class App extends Component {
 
 export default App;
 
+//<Route exact render={(props) => <Cart {...props} onRemoveItemFromCart={this.onRemoveItemFromCart}/>} path="/" />

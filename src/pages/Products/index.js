@@ -66,7 +66,7 @@ export default ({ links, match, location }) => (
             <div className="products-horizontal-gallery">
                 {products.map(({ id, name, imageUrl, shortDesc, price }, index) => (
                 <Card key={`product-${id}-${index}`} className="product-card" style={{ backgroundImage: `url(${imageUrl})` }}>
-                    <Link to={{ pathname: `${match.url}/${id}`, state: { title: name, price: price, description: shortDesc, imageUrl: imageUrl } }} className="product-wrapping-link">
+                    <Link to={{ pathname: `${match.url}/${id}`, state: { id: id, title: name, price: price, description: shortDesc, imageUrl: imageUrl } }} className="product-wrapping-link">
                         <div className="product-top-title">
                             <p className="product-title">{name}</p>
                             <p className="product-price">{price}</p>
