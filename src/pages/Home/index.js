@@ -9,8 +9,6 @@ import {
 import HomeFooter from './HomeFooter';
 import HomeHeroArea from './HomeHeroArea';
 
-
-
 export default ({ links }) => (
     <Layout 
         heroContent={HomeHeroArea}

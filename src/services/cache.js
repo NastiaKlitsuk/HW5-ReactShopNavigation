@@ -6,7 +6,7 @@ class Cache {
             this.items = [];
             this.onAddedToCart = this.onAddedToCart.bind(this);
             this.onRemoveItemFromCart = this.onRemoveItemFromCart.bind(this);
-            this.isLogedIn = false;
+            this.isLoggedIn = false;
             Cache.instance = this;
         }
 
@@ -38,9 +38,10 @@ class Cache {
         }
     }
 
-    onLogedIn()
+    onLoggedIn(event)
     {
-        this.isLogedIn = true;
+        event.preventDefault();
+        this.isLoggedIn = true;
     }
 }
 

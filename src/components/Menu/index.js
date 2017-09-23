@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import SocialLinks from '../SocialLinks/';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './menu.css';
+import cart from '../../services/cache.js';
 
 const navigationLinks = [
     {
@@ -28,25 +29,41 @@ const navigationLinks = [
     {
         name: 'Protected Page',
         path: '/protected'
+    },
+    {
+        name: 'Cart',
+        path: '/cart'
     }
 ]
 
 export default ({ children, menuConfig: { menuState, open, socialLinks } }) => (
     <div className="App-menubar">
-        <label className="hamburger-icon fa fa-bars" onClick={() => open()}/>
-        <div className={classNames(['menu-content', menuState && 'opened' ])}>
-            <div className="links-container">
-                { navigationLinks.map(({ name, path }, index) => (
-                    <Link to={`${path}`} className="page-link" key={`page-${name.toLowerCase()}-${index}`}>
-                        { name }
-                    </Link>
-                ))}
-                <Link className="page-link" to={{ pathname: '/products', search: 'referral=Amazon'}}>Referral Link</Link>
+        <div>
+            <label className="hamburger-icon fa fa-bars" onClick={() => open()} />
+            <div className={classNames(['menu-content', menuState && 'opened'])}>
+                <div className="links-container">
+                    {navigationLinks.map(({ name, path }, index) => (
+                        <Link to={`${path}`} className="page-link" key={`page-${name.toLowerCase()}-${index}`}>
+                            {name}
+                        </Link>
+                    ))}
+                    <Link className="page-link" to={{ pathname: '/products', search: 'referral=Amazon' }}>Referral Link</Link>
+                </div>
+                <div className="socialLinks">
+                    <SocialLinks links={socialLinks} type="icons" />
+                </div>
             </div>
-            <div className="socialLinks">
-                <SocialLinks links={socialLinks} type="icons"/>
-            </div>
+            <div className={classNames(['overlay', menuState && 'active'])} />
         </div>
-        <div className={classNames(['overlay', menuState && 'active'])}/>
+        <div>
+            {
+                cart.isLoggedIn ?
+                <NavLink to="/">
+                    <button className="shoppingCart" /> 
+                </NavLink> :
+                <NavLink to="/login" className="login">Login</NavLink>
+            }
+            
+        </div>
     </div>
 )

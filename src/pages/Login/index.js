@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom'
 
 export default ({ links, onLoggedIn }) => (
-    <form onSubmit={onLoggedIn}>
+    <form onSubmit={(event) => onLoggedIn(event)}>
         <Layout>
             <Section>
                 <Heading size={2}>Login</Heading>
