@@ -2,10 +2,10 @@ import React from 'react';
 import { Layout, Section, Card, Heading } from '../../components/'
 import CartHeroArea from './CartHeroArea';
 import './cart.css';
-import {productDeletedFromCart} from './actions';
-import {withRouter} from 'react-router-dom';
-import {getCart} from './reducer';
-import {connect} from 'react-redux';
+import { productDeletedFromCart } from './actions';
+import { withRouter } from 'react-router-dom';
+import { getCart } from './reducer';
+import { connect } from 'react-redux';
 
 export const Cart = ({ links, match, location, productDeletedFromCart, cart }) => (
     <Layout heroContent={CartHeroArea}>
@@ -36,7 +36,7 @@ export const Cart = ({ links, match, location, productDeletedFromCart, cart }) =
 )
 
 
-const mapStateToProps = (state) => ({ 
+const mapStateToProps = (state) => ({
     cart: getCart(state)
 })
 

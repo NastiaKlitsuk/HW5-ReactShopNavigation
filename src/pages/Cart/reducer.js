@@ -1,7 +1,7 @@
 import { actionTypes } from './actions';
 import _ from 'lodash';
 
-const INITIAL_STATE = {cart: {}};
+const INITIAL_STATE = {cart: []};
 
 export const cartReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
