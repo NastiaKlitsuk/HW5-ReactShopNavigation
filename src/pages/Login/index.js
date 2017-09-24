@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './login.css';
 import {
     Layout,
@@ -7,11 +7,14 @@ import {
     InputField
 } from '../../components/';
 import {
-    Link
-} from 'react-router-dom'
+    Link,
+    withRouter
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loggedIn } from './actions';
 
-export default ({ links, onLoggedIn }) => (
-    <form onSubmit={(event) => onLoggedIn(event)}>
+export const Login = ({ links, loggedIn }) => (
+    <form>
         <Layout>
             <Section>
                 <Heading size={2}>Login</Heading>
@@ -19,10 +22,12 @@ export default ({ links, onLoggedIn }) => (
                     <InputField name="Name" type="text" />
                     <InputField name="Password" type="password" />
                     <Link to="/" className="product-wrapping-link">
-                        <button type="submit">Login</button>
+                        <button type="submit" onClick={() => loggedIn(true)}>Login</button>
                     </Link>
                 </div>
             </Section>
         </Layout>
     </form>
 );
+
+export default withRouter(connect(null, { loggedIn })(Login));

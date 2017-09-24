@@ -24,7 +24,7 @@ const Products = ({ links, match, location, products, productSelected }) => (
                 {products.map(({ id, name, imageUrl, shortDesc, price }, index) => (
                 <Card key={`product-${id}-${index}`} className="product-card" style={{ backgroundImage: `url(${imageUrl})` }}>
                     <Link to={`${match.url}/${id}`} className="product-wrapping-link" 
-                    onClick={(event) => productSelected(id, name, shortDesc, price, imageUrl)}>
+                    onClick={(event) => {event.preventDefault; productSelected(id, name, shortDesc, price, imageUrl)}}>
                         <div className="product-top-title">
                             <p className="product-title">{name}</p>
                             <p className="product-price">{price}</p>

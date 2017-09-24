@@ -70,7 +70,7 @@ class App extends Component {
           <Route component={Product} path="/products/:id" />
           <Route component={Products} path="/products" />
           <Route component={ContactWrapper} path="/contact" />
-          <Route render={(props) => <Cart {...props} onRemoveItemFromCart={this.onRemoveItemFromCart} />} path="/cart" />
+          <Route component={Cart} path="/cart" />
           <Route component={authProvider(Protected)} path="/protected" />
           <Route render={({ match, props }) =>
             <CSSTransition appear in={!!match} timeout={1000} classNames="fade">

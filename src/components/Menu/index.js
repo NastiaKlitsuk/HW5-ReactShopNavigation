@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import SocialLinks from '../SocialLinks/';
 import { Link, NavLink } from 'react-router-dom';
 import './menu.css';
-import cart from '../../services/cache.js';
 
 const navigationLinks = [
     {
@@ -29,10 +28,6 @@ const navigationLinks = [
     {
         name: 'Protected Page',
         path: '/protected'
-    },
-    {
-        name: 'Cart',
-        path: '/cart'
     }
 ]
 
@@ -57,13 +52,12 @@ export default ({ children, menuConfig: { menuState, open, socialLinks } }) => (
         </div>
         <div>
             {
-                cart.isLoggedIn ?
+                /* cart.isLoggedIn ?
                 <NavLink to="/">
                     <button className="shoppingCart" /> 
                 </NavLink> :
-                <NavLink to="/login" className="login">Login</NavLink>
+                <NavLink to="/login" className="login">Login</NavLink> */
             }
-            
         </div>
     </div>
 )

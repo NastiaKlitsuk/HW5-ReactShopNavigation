@@ -21,7 +21,7 @@ const Product = ({ match, location, productAddedToCart, selectedProduct }) => (
             <div className="product-page">
                 <p>{selectedProduct.description}</p>
                 <img src={selectedProduct.imageUrl} />
-                <div onClick={(event) => { productAddedToCart(selectedProduct.id, selectedProduct.title, selectedProduct.description, selectedProduct.price, selectedProduct.imageUrl) }}>
+                <div onClick={(event) => { event.preventDefault; productAddedToCart(selectedProduct.id, selectedProduct.title, selectedProduct.description, selectedProduct.price, selectedProduct.imageUrl) }}>
                     <Link to={"/productaddedtocart"}>
                         <button>Buy</button>
                     </Link>

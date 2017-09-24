@@ -18,7 +18,7 @@ export default class InputField extends React.Component {
             value: this.state.value,
             onChange: ({ target: { value }}) => this.changeText(value)
         }
-        console.log(this.props.navigationMessage);
+
         return (
             <div className={classNames(["input-field", this.state.value && "form-dirty"])}  onBlur={() => this.onBlur()}>
                 { this.props.type === 'textarea' ? 
