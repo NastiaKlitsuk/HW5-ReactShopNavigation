@@ -1,8 +1,8 @@
 import React from 'react';
 import './product-page.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Layout, Section, Card, Heading } from '../../components/';
-import {productSaved} from './actions';
+import { productAddedToCart } from '../Cart/actions';
 
 import {
     Route,
@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 import { getSelectedProduct } from './reducer';
 
-const Product = ({ match, location, productSaved, selectedProduct }) => (
+const Product = ({ match, location, productAddedToCart, selectedProduct }) => (
     <Layout>
         <Section>
             <div className="product-header">
@@ -21,16 +21,18 @@ const Product = ({ match, location, productSaved, selectedProduct }) => (
             <div className="product-page">
                 <p>{selectedProduct.description}</p>
                 <img src={selectedProduct.imageUrl} />
-                <div onClick={(event) => { productSaved(event, selectedProduct.id, selectedProduct.title, selectedProduct.description, selectedProduct.price, selectedProduct.imageUrl) }}>
-                    <button>Buy</button>
+                <div onClick={(event) => { productAddedToCart(selectedProduct.id, selectedProduct.title, selectedProduct.description, selectedProduct.price, selectedProduct.imageUrl) }}>
+                    <Link to={"/productaddedtocart"}>
+                        <button>Buy</button>
+                    </Link>
                 </div>
             </div>
         </Section>
     </Layout >
 )
 
-const mapStateToProps = (state) => ({ 
+const mapStateToProps = (state) => ({
     selectedProduct: getSelectedProduct(state)
 })
 
-export default withRouter(connect(mapStateToProps, { productSaved })(Product));
+export default withRouter(connect(mapStateToProps, { productAddedToCart })(Product));

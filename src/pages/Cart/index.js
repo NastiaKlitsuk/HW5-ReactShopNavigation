@@ -1,10 +1,13 @@
 import React from 'react';
 import { Layout, Section, Card, Heading } from '../../components/'
 import CartHeroArea from './CartHeroArea';
-import cart from '../../services/cache.js';
 import './cart.css';
+import {productDeletedFromCart} from './actions';
+import {withRouter} from 'react-router-dom';
+import {getCart} from './reducer';
+import {connect} from 'react-redux';
 
-export default ({ links, match, location, onRemoveItemFromCart }) => (
+export const Cart = ({ links, match, location, productDeletedFromCart, cart }) => (
     <Layout heroContent={CartHeroArea}>
         <Section>
             <Heading size={2}>
@@ -14,9 +17,9 @@ export default ({ links, match, location, onRemoveItemFromCart }) => (
                 }
             </Heading>
             <div className="products-horizontal-gallery">
-                {cart.items.map(({ id, price, title, imageUrl, description }, index) => (
+                {cart.map(({ id, price, title, imageUrl, description }, index) => (
                     <Card key={`product-${index}`} className="product-card" style={{ backgroundImage: `url(${imageUrl})` }}>
-                        <div onClick={(event) => { onRemoveItemFromCart(event, id) }} >
+                        <div onClick={(event) => { productDeletedFromCart(event, id) }} >
                             <div className="product-top-title">
                                 <button className="remove" />
                                 <p className="product-title">{title}</p>
@@ -31,3 +34,10 @@ export default ({ links, match, location, onRemoveItemFromCart }) => (
         </Section>
     </Layout>
 )
+
+
+const mapStateToProps = (state) => ({ 
+    cart: getCart(state)
+})
+
+export default withRouter(connect(mapStateToProps, { productDeletedFromCart })(Cart));

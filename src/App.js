@@ -8,11 +8,11 @@ import Products from './pages/Products/';
 import Product from './pages/Product';
 import Contact from './pages/Contact/';
 import NotFound from './pages/NotFound';
+import ProductAddedToCart from './pages/ProductAddedToCart';
 import { Layout } from './components/';
 import Cart from './pages/Cart/';
 import Login from './pages/Login';
 import CSSTransition from 'react-transition-group/CSSTransition'
-//import cart from './services/cache.js';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -77,6 +77,7 @@ class App extends Component {
               <Login {...props} onLoggedIn={this.onLoggedIn} />
             </CSSTransition>
           } path="/login" />
+          <Route component={ProductAddedToCart} path="/productaddedtocart"/>
           <Route component={NotFound} />
         </Switch>
       </Router>
