@@ -19,7 +19,7 @@ export const Cart = ({ links, match, location, productDeletedFromCart, cart }) =
             <div className="products-horizontal-gallery">
                 {cart.map(({ id, price, title, imageUrl, description }, index) => (
                     <Card key={`product-${index}`} className="product-card" style={{ backgroundImage: `url(${imageUrl})` }}>
-                        <div onClick={(event) => { productDeletedFromCart(event, id) }} >
+                        <div onClick={(event) => { productDeletedFromCart(id) }} >
                             <div className="product-top-title">
                                 <button className="remove" />
                                 <p className="product-title">{title}</p>

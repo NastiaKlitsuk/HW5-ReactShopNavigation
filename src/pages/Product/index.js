@@ -9,7 +9,7 @@ import {
     Link,
     withRouter
 } from 'react-router-dom';
-import { getSelectedProduct } from './reducer';
+import { getSelectedProduct } from '../Products/reducer';
 
 const Product = ({ match, location, productAddedToCart, selectedProduct }) => (
     <Layout>

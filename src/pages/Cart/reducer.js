@@ -13,16 +13,15 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                 id: action.id,
                 price: action.price,
                 title: action.title,
-                imageUrl: action.url,
+                imageUrl: action.imageUrl,
                 description: action.description
               }
             ] } 
         case actionTypes.PRODUCT_DELETED_FROM_CART:
             const positionProductToRemove = _.findIndex(state.cart, {id: action.id});
-
             return { ...state,  
                 cart: [...state.cart.slice(0, positionProductToRemove),
-                        ...this.state.slice(positionProductToRemove+1)]
+                        ...state.cart.slice(positionProductToRemove+1)]
                   } 
         default:
             return state;
