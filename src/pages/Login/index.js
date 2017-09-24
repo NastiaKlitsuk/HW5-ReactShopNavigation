@@ -22,7 +22,7 @@ export const Login = ({ links, loggedIn }) => (
                     <InputField name="Name" type="text" />
                     <InputField name="Password" type="password" />
                     <Link to="/" className="product-wrapping-link">
-                        <button type="submit" onClick={() => loggedIn(true)}>Login</button>
+                        <button type="submit" onClick={() => loggedIn()}>Login</button>
                     </Link>
                 </div>
             </Section>

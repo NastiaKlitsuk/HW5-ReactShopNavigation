@@ -43,24 +43,6 @@ const ContactWrapper = () => {
 };
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = { isLoggedIn: false, cart: cart.items };
-    // this.onRemoveItemFromCart = this.onRemoveItemFromCart.bind(this);
-    // this.onLoggedIn = this.onLoggedIn.bind(this);
-  }
-
-  // onRemoveItemFromCart(event, productId) {
-  //   cart.onRemoveItemFromCart(event, productId);
-  //   this.setState({ cart: cart.items });
-  // }
-
-  // onLoggedIn(event) {
-  //   console.log(`onLoggedIn: ${cart.isLoggedIn}`);
-  //   cart.onLoggedIn(event);
-  //   this.setState({ isLoggedIn: cart.isLoggedIn });
-  // }
-
   render() {
     return (
       <Router>

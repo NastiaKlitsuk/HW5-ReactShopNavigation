@@ -2,7 +2,13 @@ export const actionTypes = {
     LOGGED_IN: 'LOGGED_IN',
 }
 
-export const loggedIn = (isLoggedIn) => ({
-    type: actionTypes.LOGGED_IN,
-    isLoggedIn: isLoggedIn
-})
+const timeout = () => new Promise(resolve => setTimeout(() => resolve(), 5000));
+
+export const loggedIn = () => (dispatch) => {
+    timeout().then(() => {
+        dispatch({
+            type: actionTypes.LOGGED_IN,
+            isLoggedIn: true
+        })
+    })
+};
