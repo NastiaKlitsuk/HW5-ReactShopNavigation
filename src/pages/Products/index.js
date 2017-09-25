@@ -2,10 +2,7 @@ import React from 'react';
 import { Layout, Section, Card, Heading } from '../../components/'
 import ProductsHeroArea from './ProductsHeroArea';
 import './products.css';
-import {
-    Route,
-    Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getProducts, getSelectedProduct } from './reducer';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -24,7 +21,7 @@ const Products = ({ links, match, location, products, productSelected }) => (
                 {products.map(({ id, name, imageUrl, shortDesc, price }, index) => (
                 <Card key={`product-${id}-${index}`} className="product-card" style={{ backgroundImage: `url(${imageUrl})` }}>
                     <Link to={`${match.url}/${id}`} className="product-wrapping-link" 
-                    onClick={(event) => {event.preventDefault; productSelected(id, name, shortDesc, price, imageUrl)}}>
+                    onClick={(event) => {event.preventDefault(); productSelected(id, name, shortDesc, price, imageUrl)}}>
                         <div className="product-top-title">
                             <p className="product-title">{name}</p>
                             <p className="product-price">{price}</p>

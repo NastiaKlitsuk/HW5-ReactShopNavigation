@@ -5,8 +5,6 @@ import {
     Footer,
     SocialLinks
 } from '../components'
-
-import { Route } from 'react-router-dom';
 import classNames from 'classnames';
 
 const socialLinks = [

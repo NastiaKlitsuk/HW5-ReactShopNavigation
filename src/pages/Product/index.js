@@ -1,11 +1,10 @@
 import React from 'react';
 import './product-page.css';
 import { connect } from 'react-redux';
-import { Layout, Section, Card, Heading } from '../../components/';
+import { Layout, Section, Heading } from '../../components/';
 import { productAddedToCart } from '../Cart/actions';
 
 import {
-    Route,
     Link,
     withRouter
 } from 'react-router-dom';
@@ -20,8 +19,8 @@ const Product = ({ match, location, productAddedToCart, selectedProduct }) => (
             </div>
             <div className="product-page">
                 <p>{selectedProduct.description}</p>
-                <img src={selectedProduct.imageUrl} />
-                <div onClick={(event) => { event.preventDefault; productAddedToCart(selectedProduct.id, selectedProduct.title, selectedProduct.description, selectedProduct.price, selectedProduct.imageUrl) }}>
+                <img src={selectedProduct.imageUrl} alt=""/>
+                <div onClick={(event) => { event.preventDefault(); productAddedToCart(selectedProduct.id, selectedProduct.title, selectedProduct.description, selectedProduct.price, selectedProduct.imageUrl) }}>
                     <Link to={"/productaddedtocart"}>
                         <button>Buy</button>
                     </Link>

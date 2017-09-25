@@ -3,7 +3,6 @@ import React from 'react';
 import {
   Layout,
   Heading,
-  Section,
   HeroArea
 } from '../../components/';
 

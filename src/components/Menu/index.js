@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import SocialLinks from '../SocialLinks/';
 import { Link, NavLink } from 'react-router-dom';
 import './menu.css';
-import store from '../../store';
 import { connect } from 'react-redux';
 
 const navigationLinks = [
@@ -28,7 +27,7 @@ const navigationLinks = [
         path: '/login'
     },
     {
-        name: 'Protected Page',
+        name: 'Protected',
         path: '/protected'
     }
 ]
