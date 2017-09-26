@@ -1,0 +1,8 @@
+{
+    "welcome": "Welcome {userName}, {{enjoyShopping}}!",
+    "enjoyShopping": "Enjoy your shopping",
+    "thankYou": "Thank you, {userName}!",
+    "register": "Please sign in, when you finish shopping."
+}
+  
+  

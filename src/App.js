@@ -20,7 +20,7 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom';
-
+import T from 'i18n-react';
 const authProvider = (WrappedComponent, isLoggedIn) => {
   return ({ match }) => (
     isLoggedIn ?
@@ -36,6 +36,10 @@ const ContactWrapper = () => {
 };
 
 class App extends Component {
+  componentWillMount(){
+    T.setTexts(require('./translations.json'))
+  }
+
   render() {
     return (
       <Router>
