@@ -4,35 +4,10 @@ import SocialLinks from '../SocialLinks/';
 import { Link, NavLink } from 'react-router-dom';
 import './menu.css';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { getNavigationLinks } from './reducer';
 
-const navigationLinks = [
-    {
-        name: 'Home',
-        path: '/'
-    },
-    {
-        name: 'About',
-        path: '/about'
-    },
-    {
-        name: 'Products',
-        path: '/products'
-    },
-    {
-        name: 'Contact',
-        path: '/contact'
-    },
-    {
-        name: 'Login',
-        path: '/login'
-    },
-    {
-        name: 'Protected',
-        path: '/protected'
-    }
-]
-
-export const Menu = ({ children, menuConfig: { menuState, open, socialLinks }, isLoggedIn }) => (
+export const Menu = ({ children, menuConfig: { menuState, open, socialLinks }, isLoggedIn, navigationLinks }) => (
     <div className="App-menubar">
         <div>
             <label className="hamburger-icon fa fa-bars" onClick={() => open()} />
@@ -63,8 +38,9 @@ export const Menu = ({ children, menuConfig: { menuState, open, socialLinks }, i
     </div>
 )
 
-const mapStateToProps = ({ loginReducer: { isLoggedIn } }) => ({
-    isLoggedIn
+const mapStateToProps = (state) => ({
+    isLoggedIn: state.loginReducer.isLoggedIn,
+    navigationLinks: getNavigationLinks(state)
 })
 
-export default connect(mapStateToProps)(Menu);
+export default withRouter(connect(mapStateToProps)(Menu));
