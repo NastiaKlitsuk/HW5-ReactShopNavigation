@@ -16,11 +16,11 @@ export const login = () => (dispatch) => {
         isLoggingInProgress: true
     })
 
-    return delay(5000).then(() => {
+    return delay(1000).then(() => {
         dispatch({
             type: actionTypes.LOGGED_IN,
             isLoggedIn: true,
             isLoggingInProgress: false
-        })
-    })
+        });
+    });
 };
