@@ -109,16 +109,17 @@ describe('Cart Reducer', () => {
         })).toEqual( { cart:[] })
     })
 
-    // it('should throw error where the product to delete is not in the cart', () => {
-    //     const productToDelete = {
-    //         id: 1
-    //     }
-    //     const state = { cart:[]}
+    it('should throw error where the product to delete is not in the cart', () => {
+        const productToDelete = {
+            id: 1
+        }
+        const state = { cart:[]}
 
-    //     expect(
-    //         reducer.cartReducer(state, {
-    //         type: actions.actionTypes.DELETE_PRODUCT_FROM_CART,
-    //         id: productToDelete.id
-    //     })).toThrow(new Error("The product 1 is not in the cart."));
-    // })
+        expect(() =>{
+            reducer.cartReducer(state, {
+            type: actions.actionTypes.DELETE_PRODUCT_FROM_CART,
+            id: productToDelete.id
+            })
+        }).toThrow('The product 1 is not in the cart.');
+    })
 })

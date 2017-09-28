@@ -21,7 +21,7 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
             const positionProductToRemove = _.findIndex(state.cart, {id: action.id});
             if (positionProductToRemove < 0) 
             {
-                throw new Error(`The product ${action.id} is not in the cart.`);
+                throw `The product ${action.id} is not in the cart.`;
             }
             return { ...state,  
                 cart: [...state.cart.slice(0, positionProductToRemove),
