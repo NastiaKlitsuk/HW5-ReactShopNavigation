@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Menu } from './index';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import {
   BrowserRouter as Router,
   Route
@@ -44,7 +44,7 @@ describe('Menu renders', () => {
   })
 
   it('login link displayed when user did not log in', () => {
-    enzymeWrapper;
+    const enzymeWrapper = shallow(<Menu {...props} />);
     const loginLink = enzymeWrapper.find('NavLink').find('.login');
     const shoppingCartLink = enzymeWrapper.find('NavLink').find('.shoppingCart');
     expect(loginLink.length).toBe(1);
@@ -58,7 +58,7 @@ describe('Menu renders', () => {
       isLoggedIn: true,
       navigationLinks: navigationLinks
     }
-    const enzymeWrapper = mount(<Router><Route><Menu {...loginProps} /></Route></Router>);
+    const enzymeWrapper = shallow(<Menu {...loginProps} />);
     const loginLink = enzymeWrapper.find('NavLink').find('.login');
     const shoppingCartLink = enzymeWrapper.find('NavLink').find('.shoppingCart');
     expect(loginLink.length).toBe(0);
