@@ -7,12 +7,13 @@ import {
   Route
 } from 'react-router-dom';
 import expect from 'expect';
+import renderer from 'react-test-renderer';
 
 const socialLinks = [
   {
-    text: '',
+    text: 'facebook',
     icon: '',
-    link: ''
+    link: 'www.facebook.com'
   }]
 
 const navigationLinks = [
@@ -29,24 +30,24 @@ const props = {
   navigationLinks: navigationLinks
 }
 
-const enzymeWrapper = mount(<Router><Route><Menu {...props} /></Route></Router>);
+const mountedMenu = mount(<Router><Route><Menu {...props} /></Route></Router>);
 
 describe('Menu renders', () => {
   it('mounts', () => {
-    enzymeWrapper
+    mountedMenu
   })
 
   it('naviagtion links are rendered', () => {
-    enzymeWrapper;
-    const navigationLinksWrapper = enzymeWrapper.find('div.links-container');
+    mountedMenu;
+    const navigationLinksWrapper = mountedMenu.find('div.links-container');
     const linkWrapper = navigationLinksWrapper.find('Link').find('.page-link');
     expect(linkWrapper.at(0).text()).toBe('Home');
   })
 
   it('login link displayed when user did not log in', () => {
-    const enzymeWrapper = shallow(<Menu {...props} />);
-    const loginLink = enzymeWrapper.find('NavLink').find('.login');
-    const shoppingCartLink = enzymeWrapper.find('NavLink').find('.shoppingCart');
+    const shallowMenu = shallow(<Menu {...props} />);
+    const loginLink = shallowMenu.find('NavLink').find('.login');
+    const shoppingCartLink = shallowMenu.find('NavLink').find('.shoppingCart');
     expect(loginLink.length).toBe(1);
     expect(shoppingCartLink.length).toBe(0);
   })
@@ -58,10 +59,15 @@ describe('Menu renders', () => {
       isLoggedIn: true,
       navigationLinks: navigationLinks
     }
-    const enzymeWrapper = shallow(<Menu {...loginProps} />);
-    const loginLink = enzymeWrapper.find('NavLink').find('.login');
-    const shoppingCartLink = enzymeWrapper.find('NavLink').find('.shoppingCart');
+    const shallowMenu = shallow(<Menu {...loginProps} />);
+    const loginLink = shallowMenu.find('NavLink').find('.login');
+    const shoppingCartLink = shallowMenu.find('NavLink').find('.shoppingCart');
     expect(loginLink.length).toBe(0);
     expect(shoppingCartLink.length).toBe(1);
+  })
+
+  it('menu renders correctly', () => {
+    const tree = renderer.create(<Router><Route><Menu {...props} /></Route></Router>).toJSON();
+    expect(tree).toMatchSnapshot();
   })
 })

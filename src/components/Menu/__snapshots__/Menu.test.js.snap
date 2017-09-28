@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu renders menu renders correctly 1`] = `
+<div
+  className="App-menubar"
+>
+  <div>
+    <label
+      className="hamburger-icon fa fa-bars"
+      onClick={[Function]}
+    />
+    <div
+      className="menu-content"
+    >
+      <div
+        className="links-container"
+      >
+        <a
+          className="page-link"
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+        <a
+          className="page-link"
+          href="/products?referral=Amazon"
+          onClick={[Function]}
+        >
+          Referral Link
+        </a>
+      </div>
+      <div
+        className="socialLinks"
+      >
+        <div
+          className="social-links"
+        >
+          <a
+            className="fa fa-"
+            href="www.facebook.com"
+            target="_blank"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="overlay"
+    />
+  </div>
+  <div>
+    <a
+      aria-current={false}
+      className="login"
+      href="/login"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Login
+    </a>
+  </div>
+</div>
+`;
