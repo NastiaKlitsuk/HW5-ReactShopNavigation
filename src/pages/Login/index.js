@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { login } from './actions';
 import { Field } from 'react-redux-form';
 
-export const Login = ({ links, loggedIn, isLoggingInProgress}) => (
+export const Login = ({ links, login, isLoggingInProgress}) => (
     <form>
         <Layout>
             <Section>
