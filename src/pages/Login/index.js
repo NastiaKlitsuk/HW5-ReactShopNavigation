@@ -10,7 +10,7 @@ import {
     withRouter
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loggedIn } from './actions';
+import { login } from './actions';
 import { Field } from 'react-redux-form';
 
 export const Login = ({ links, loggedIn, isLoggingInProgress}) => (
@@ -28,7 +28,7 @@ export const Login = ({ links, loggedIn, isLoggingInProgress}) => (
                             <input type="password" />
                         </Field>
                         <Link to="/" className="product-wrapping-link">
-                            <button type="submit" onClick={() => loggedIn()}>Login</button>
+                            <button type="submit" onClick={() => login()}>Login</button>
                         </Link>
                         <div className="loging-inprocess">
                         { 
@@ -47,4 +47,4 @@ const mapStateToProps = ({ loginReducer: { isLoggingInProgress }}) => ({
     isLoggingInProgress
 })
 
-export default withRouter(connect(mapStateToProps, {loggedIn})(Login));
+export default withRouter(connect(mapStateToProps, {login})(Login));

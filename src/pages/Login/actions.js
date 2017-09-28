@@ -9,7 +9,7 @@ function delay(ms) {
     });
  }
 
-export const loggedIn = () => (dispatch) => {
+export const login = () => (dispatch) => {
     dispatch({
         type: actionTypes.LOGGING_IN,
         isLoggedIn: false,
